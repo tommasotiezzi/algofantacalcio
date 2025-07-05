@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-
+    // ========================================
+    // DEVICE DETECTION & SMART CTA BUTTON
+    // ========================================
     function detectDevice() {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         
@@ -33,10 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        console.log(`📱 Device detected: ${device} - CTA link updated`);
+        console.log(`📱 Device detected: ${device} - CTA link updated with UTM tracking`);
     }
 
     updateCTAButton();
+
+    // ========================================
+    // SMOOTH SCROLLING
+    // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -49,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // ========================================
+    // HEADER SCROLL EFFECT
+    // ========================================
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
         if (header) {
@@ -59,6 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // ========================================
+    // CAROUSEL FUNCTIONALITY
+    // ========================================
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.carousel-indicators button');
@@ -196,6 +210,9 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoplay(); 
     }
 
+    // ========================================
+    // NEWSLETTER FORM
+    // ========================================
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
@@ -211,6 +228,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 button.textContent = 'Inviato!';
                 button.style.background = '#22c55e';
+                
+                // Track newsletter signup in Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'newsletter_signup', {
+                        'device': detectDevice(),
+                        'email_domain': email.split('@')[1]
+                    });
+                }
                 
                 setTimeout(() => {
                     button.textContent = originalText;
@@ -236,30 +261,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ========================================
+    // DOWNLOAD BUTTON ACTIONS
+    // ========================================
     document.querySelectorAll('.download-btn').forEach(button => {
         button.addEventListener('click', function(e) {
             const isIOS = this.classList.contains('ios');
-            const platform = isIOS ? 'App Store' : 'Google Play';
+            const platform = isIOS ? 'iOS' : 'Android';
+            const device = detectDevice();
+            const section = this.closest('section')?.className || 'unknown';
             
-            console.log(`Download clicked: ${platform}`);
+            // Track download click in Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download_click', {
+                    'platform': platform,
+                    'user_device': device,
+                    'button_location': section
+                });
+            }
             
+            console.log(`Download clicked: ${platform} - Device: ${device}`);
         });
     });
 
-
+    // ========================================
+    // TWITCH BUTTON ACTION
+    // ========================================
     const twitchButton = document.querySelector('.btn-twitch');
     if (twitchButton) {
         twitchButton.addEventListener('click', function(e) {
-            console.log('Twitch Prime link clicked');
-            
+            // Track Twitch click in Google Analytics
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'twitch_prime_click', {
+                gtag('event', 'twitch_click', {
                     'device': detectDevice()
                 });
             }
+            
+            console.log('Twitch Prime link clicked');
         });
     }
 
+    // ========================================
+    // SOCIAL LINKS TRACKING
+    // ========================================
+    document.querySelectorAll('.social-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const socialPlatform = this.getAttribute('data-social');
+            
+            // Track social click in Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'social_click', {
+                    'social_platform': socialPlatform,
+                    'device': detectDevice(),
+                    'link_url': this.href
+                });
+            }
+            
+            console.log(`Social link clicked: ${socialPlatform}`);
+        });
+    });
+
+    // ========================================
+    // INTERSECTION OBSERVER FOR ANIMATIONS
+    // ========================================
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -288,7 +352,9 @@ document.addEventListener('DOMContentLoaded', function() {
         fadeInObserver.observe(card);
     });
 
-
+    // ========================================
+    // FEATURE CARDS HOVER EFFECT
+    // ========================================
     document.querySelectorAll('.feature-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px)';
@@ -299,7 +365,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
+    // ========================================
+    // SCREENSHOT ITEMS HOVER EFFECT
+    // ========================================
     document.querySelectorAll('.screenshot-item').forEach(item => {
         item.addEventListener('mouseenter', function() {
             this.style.zIndex = '15';
@@ -312,7 +380,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
+    // ========================================
+    // MOBILE MENU TOGGLE
+    // ========================================
     const mobileMenuButton = document.querySelector('.mobile-menu-toggle');
     const nav = document.querySelector('nav');
     
@@ -323,7 +393,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
+    // ========================================
+    // LAZY LOAD IMAGES
+    // ========================================
     const lazyImages = document.querySelectorAll('img[data-src]');
     
     if (lazyImages.length > 0) {
@@ -349,7 +421,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
+    // ========================================
+    // SCROLL TO TOP BUTTON
+    // ========================================
     const scrollToTopBtn = document.querySelector('.scroll-to-top');
     
     if (scrollToTopBtn) {
@@ -371,19 +445,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ========================================
+    // ERROR HANDLING
+    // ========================================
     window.addEventListener('error', (e) => {
         console.error('JavaScript Error:', e.error);
     });
 
-
+    // ========================================
+    // INITIALIZATION COMPLETE
+    // ========================================
     console.log('🚀 Algo Fantacalcio website loaded successfully!');
     console.log(`📱 Carousel initialized with ${totalSlides} slides`);
     console.log(`⏱️ Auto-scroll: ${AUTO_SLIDE_DURATION}ms`);
     console.log(`📱 Device detection enabled for CTA: ${detectDevice()}`);
+    console.log('📊 Google Analytics tracking enabled');
 });
 
-
-
+// ========================================
+// UTILITY FUNCTIONS
+// ========================================
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
