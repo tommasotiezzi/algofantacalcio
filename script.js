@@ -41,6 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCTAButton();
 
     // ========================================
+    // SCROLL TO FEATURES FUNCTIONALITY
+    // ========================================
+    window.scrollToFeatures = function() {
+        const featuresSection = document.querySelector('.features-section');
+        if (featuresSection) {
+            featuresSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // Track scroll arrow click
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_arrow_click', {
+                'device': detectDevice()
+            });
+        }
+        
+        console.log('Scroll arrow clicked - navigating to features');
+    };
+
+    // ========================================
     // SMOOTH SCROLLING
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -460,6 +482,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(`⏱️ Auto-scroll: ${AUTO_SLIDE_DURATION}ms`);
     console.log(`📱 Device detection enabled for CTA: ${detectDevice()}`);
     console.log('📊 Google Analytics tracking enabled');
+    console.log('⬇️ Scroll arrow functionality ready');
 });
 
 // ========================================
