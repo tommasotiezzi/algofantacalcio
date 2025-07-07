@@ -251,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.textContent = 'Inviato!';
                 button.style.background = '#22c55e';
                 
-                // Track newsletter signup in Google Analytics
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'newsletter_signup', {
                         'device': detectDevice(),
@@ -293,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const device = detectDevice();
             const section = this.closest('section')?.className || 'unknown';
             
-            // Track download click in Google Analytics
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'download_click', {
                     'platform': platform,
@@ -312,7 +310,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const twitchButton = document.querySelector('.btn-twitch');
     if (twitchButton) {
         twitchButton.addEventListener('click', function(e) {
-            // Track Twitch click in Google Analytics
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'twitch_click', {
                     'device': detectDevice()
@@ -330,7 +327,6 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             const socialPlatform = this.getAttribute('data-social');
             
-            // Track social click in Google Analytics
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'social_click', {
                     'social_platform': socialPlatform,
