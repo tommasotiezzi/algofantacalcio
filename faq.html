@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <style>
+   <style>
         * {
             margin: 0;
             padding: 0;
@@ -42,7 +42,6 @@
             padding: 80px 20px 60px;
         }
 
-        /* Header semplice */
         .page-header {
             text-align: center;
             margin-bottom: 60px;
@@ -81,7 +80,6 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* Sezioni FAQ */
         .faq-section {
             margin-bottom: 50px;
         }
@@ -130,9 +128,11 @@
         }
 
         .faq-arrow {
-            font-size: 20px;
+            width: 20px;
+            height: 20px;
             transition: transform 0.3s ease;
             color: #60a5fa;
+            flex-shrink: 0;
         }
 
         .faq-answer {
@@ -143,10 +143,24 @@
         }
 
         .faq-answer-content {
-            padding: 0 30px 25px 30px;
+            padding: 25px 30px 25px 30px;
             color: rgba(255, 255, 255, 0.9);
             font-size: 16px;
             line-height: 1.6;
+        }
+
+        .faq-answer-content strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .faq-answer-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 5px;
         }
 
         .faq-item.active .faq-arrow {
@@ -154,10 +168,27 @@
         }
 
         .faq-item.active .faq-answer {
-            max-height: 300px;
+            max-height: 800px;
         }
 
-        /* Support Section */
+        .faq-item.featured-faq {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 8px 32px rgba(96, 165, 250, 0.2);
+            position: relative;
+            margin: 30px 0 40px 0;
+        }
+
+        .faq-item.featured-faq::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #60a5fa, #8b5cf6, #ec4899);
+        }
+
         .support-section {
             margin-top: 60px;
             margin-bottom: 40px;
@@ -267,6 +298,25 @@
             .support-box p:first-child {
                 font-size: 16px;
             }
+
+            .faq-item.active .faq-answer {
+                max-height: 600px;
+            }
+
+            .featured-faq-content-inner {
+                padding: 0 25px 30px;
+                font-size: 15px;
+            }
+
+            .featured-faq-title {
+                font-size: 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .featured-faq-header {
+                padding: 25px 20px 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -290,12 +340,32 @@
             .faq-answer-content {
                 padding: 0 15px 18px 15px;
             }
+
+            .faq-item.active .faq-answer {
+                max-height: 700px;
+            }
+
+            .featured-faq-title {
+                font-size: 18px;
+            }
+
+            .featured-faq-icon {
+                font-size: 24px;
+            }
+
+            .featured-faq-header {
+                padding: 20px 15px 12px;
+            }
+
+            .featured-faq-content-inner {
+                padding: 0 15px 25px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="page-header">
             <a href="index.html" class="logo-link">
                 <img src="./loghi/Pittogramma-Bianco.svg" width="32px" height="32px" alt="Algo Fantacalcio">
@@ -305,125 +375,214 @@
             <p class="page-subtitle">Trova le risposte alle domande più comuni sull'utilizzo di Algo</p>
         </div>
 
-        <!-- Sezione Generale -->
-        <div class="faq-section">
-            <h2 class="section-title">Generale</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Come posso registrarmi su Algo Fantacalcio?</span>
-                    <span class="faq-arrow">▼</span>
+        <div class="faq-item featured-faq">
+            <div class="faq-question">
+                <div style="display: flex; align-items: center; gap: 15px; font-size: 20px; width: 100%;">
+                    <span>🎁</span>
+                    <span>Come posso riscattare gemme gratuite con Amazon Prime?</span>
                 </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Per registrarti, clicca sul pulsante "Registrati" nella homepage e compila i campi richiesti.
-                    </div>
-                </div>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                </svg>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quali sono i requisiti di sistema per utilizzare l'app?</span>
-                    <span class="faq-arrow">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. L'applicazione è compatibile con tutti i browser moderni e dispositivi mobili. Raccomandiamo Chrome, Firefox, Safari o Edge nella versione più recente.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Posso utilizzare Algo gratuitamente?</span>
-                    <span class="faq-arrow">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sì, offriamo una versione gratuita con funzionalità base. Per accedere alle funzioni premium, è disponibile un piano di abbonamento mensile.
-                    </div>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Come posso modificare le mie informazioni personali?</span>
-                    <span class="faq-arrow">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <div class="faq-answer-content">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Accedi al tuo profilo dal menu principale e seleziona "Impostazioni Account" per modificare nome, email e altre informazioni personali.
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Se sei abbonato ad <strong>Amazon Prime</strong>, puoi ottenere gemme gratuite su ALGO tramite <strong>Prime Gaming</strong>. Segui questi passaggi per completare la procedura:</p><br>
+                    
+                    <p><strong>1. Accedi a Prime Gaming:</strong> Vai su gaming.amazon.com ed effettua l'accesso con il tuo account Amazon Prime.</p><br>
+                    
+                    <p><strong>2. Abbonati gratuitamente al canale FantaTiaTV su Twitch:</strong> Il tuo account Prime ti consente di effettuare un abbonamento gratuito ogni mese su un canale Twitch:</p>
+                    
+                    <p>– Cerca il canale <strong>FantaTiaTV</strong></p>
+                    
+                    <p>– Clicca su <strong>"Segui"</strong> e poi su <strong>"Abbonati"</strong></p>
+                    
+                    <p>– Nella finestra che si apre, seleziona <strong>"Usa Prime"</strong> per utilizzare l'abbonamento gratuito incluso nel tuo piano Prime</p>
+                    
+                    <p>📌 <em>Nota importante:</em> questa operazione <strong>non è disponibile tramite l'app mobile di Twitch</strong>. È necessario utilizzare un <strong>PC</strong> o un <strong>browser da smartphone</strong> (come Safari o Chrome).</p><br>
+                    
+                    <p><strong>3. Riscatta le gemme su ALGO:</strong> Una volta completata l'abbonamento al canale FantaTiaTV, apri l'app ALGO, vai su <strong>Impostazioni</strong> e clicca su <strong>"Riscatta Gemme Gratis con Twitch"</strong>. Segui le istruzioni per accedere con il tuo account Twitch e riscattare correttamente le gemme.</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 20px; margin-top: 25px; border-left: 4px solid #60a5fa;">
+                        <p style="margin: 0 0 15px 0; font-weight: 600; color: #93c5fd;">📺 Video Tutorial</p>
+                        <p style="margin: 0 0 15px 0;">Per una guida visiva completa, guarda questo video esplicativo:</p>
+                        <a href="https://youtu.be/fBp4_RhvVaI?si=X0thJHj1Cu_7JoKA" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #ff0000; color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            ▶️ Guarda su YouTube
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Sezione Funzionalità -->
         <div class="faq-section">
-            <h2 class="section-title">Funzionalità</h2>
+            <h2 class="section-title">Profilo, Gemme & Pagamenti</h2>
             
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Come funziona l'algoritmo di Algo?</span>
-                    <span class="faq-arrow">▼</span>
+                    <span>Hai acquistato gemme ma non risultano disponibili nel tuo account?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione. Il nostro algoritmo analizza statistiche storiche, forma attuale e probabilità per fornire consigli personalizzati sulla tua formazione fantacalcio.
+                        In alcuni casi, le gemme acquistate potrebbero non apparire correttamente. Le cause più comuni sono:<br><br>
+                        <strong>1. Accesso con un account diverso:</strong> È possibile che tu abbia inconsapevolmente effettuato l'accesso con un account differente rispetto a quello utilizzato per l'acquisto (ad esempio, usando un metodo di login diverso: Google, Apple, email, ecc.). In questo caso, ti invitiamo a effettuare il logout e successivamente il login con gli altri metodi a tua disposizione, fino a individuare l'account corretto.<br><br>
+                        <strong>2. Malfunzionamento tecnico:</strong> Se sei certo di aver effettuato l'accesso con l'account corretto ma le gemme continuano a non risultare disponibili, ti invitiamo a contattare il nostro supporto all'indirizzo <strong>supporto@algofantacalcio.it</strong>. Per una gestione più rapida della richiesta, ti chiediamo di allegare:
+                        <ul>
+                            <li>L'indirizzo email utilizzato per l'accesso</li>
+                            <li>Uno o più screenshot che evidenzino il problema</li>
+                            <li>L'<strong>ID utente</strong> (lo trovi nella sezione Profilo dell'app: è un codice alfanumerico facilmente copiabile tramite l'apposito pulsante)</li>
+                            <li>Le eventuali <strong>ricevute di pagamento</strong> relative all'acquisto</li>
+                        </ul>
+                        Il nostro team di assistenza risponderà entro <strong>72 ore lavorative</strong>. Il servizio è attivo dal <strong>lunedì al sabato mattina</strong>.
                     </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Posso importare la mia rosa da altre piattaforme?</span>
-                    <span class="faq-arrow">▼</span>
+                    <span>L'app non funziona correttamente?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. Attualmente supportiamo l'importazione da Fantacalcio.it, Leghe Fantagazzetta e altre principali piattaforme italiane tramite file CSV o collegamento diretto.
+                        Se l'app ALGO sembra non rispondere o presenta malfunzionamenti, ti consigliamo innanzitutto di verificare la stabilità della tua <strong>connessione Internet</strong> e riprovare ad accedere dopo qualche minuto.<br><br>
+                        In alcuni casi, eventuali disservizi possono essere legati a <strong>interventi di manutenzione programmata</strong> o a <strong>problemi temporanei sui server</strong>. Prima di contattare l'assistenza, ti invitiamo a consultare il nostro profilo Instagram @algo_fantacalcio, dove comunichiamo tempestivamente ogni aggiornamento tramite le <strong>storie</strong>.<br><br>
+                        Rimani sempre connesso ai nostri canali ufficiali per ricevere informazioni in tempo reale sullo stato dell'applicazione e sugli eventuali interventi in corso.
                     </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Quanto spesso vengono aggiornati i dati dei giocatori?</span>
-                    <span class="faq-arrow">▼</span>
+                    <span>Non ricevi il codice OTP per accedere?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. I dati vengono aggiornati quotidianamente dopo ogni partita e includono statistiche, infortuni, squalifiche e probabili formazioni.
+                        Se durante la procedura di login non ricevi il codice OTP (One-Time Password), ti invitiamo innanzitutto a controllare la <strong>casella di posta indesiderata (spam)</strong>. È inoltre possibile che la tua casella email sia <strong>piena</strong> o momentaneamente non in grado di ricevere nuovi messaggi.<br><br>
+                        In alternativa, il mancato invio potrebbe dipendere da un <strong>errore temporaneo dell'applicazione</strong>. In questi casi, è consigliabile <strong>chiudere e riaprire l'app</strong> e ripetere la procedura di accesso.<br><br>
+                        Se il problema persiste, ti invitiamo a contattare il nostro supporto tecnico all'indirizzo <strong>support@algofantacalcio.it</strong>, allegando <strong>uno screenshot o una breve registrazione video</strong> che mostri il problema riscontrato. Questo ci aiuterà a fornirti assistenza in modo più rapido ed efficace.
                     </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Posso condividere i consigli con la mia lega?</span>
-                    <span class="faq-arrow">▼</span>
+                    <span>Ogni quanto posso riscattare le gemme gratis con Amazon Prime?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur. Sì, puoi creare gruppi privati per condividere analisi e consigli con i membri della tua lega, mantenendo le strategie segrete agli avversari.
+                        Puoi riscattare le gemme gratuite con Amazon Prime ogni <strong>30 giorni</strong> dall'ultimo riscatto effettuato tramite l'app. Il riscatto standard prevede l'accredito di <strong>130 gemme</strong>, che coprono esattamente due settimane di utilizzo.<br><br>
+                        Per gli utenti aderenti alla promozione "Fedeli" avviata nel giugno 2024, valida fino al <strong>30 giugno 2026</strong>, il riscatto mensile è maggiorato a <strong>260 gemme</strong>.
                     </div>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Che tipo di notifiche posso ricevere?</span>
-                    <span class="faq-arrow">▼</span>
+                    <span>Come posso richiedere la cancellazione del mio account?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti. Puoi ricevere notifiche per infortuni dell'ultimo minuto, cambi formazione, consigli di mercato e promemoria prima delle deadline.
+                        In conformità con i nostri <strong>Termini e Condizioni</strong>, la richiesta di cancellazione dell'account deve essere inviata direttamente tramite l'app.<br><br>
+                        Per procedere, accedi a: <strong>Hub > Profilo > Modifica Profilo > Richiedi cancellazione account</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Come posso attivare le notifiche in app?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Le notifiche dell'app ALGO possono essere attivate direttamente dalla sezione <strong>Profilo</strong>, oppure accedendo alle impostazioni del tuo dispositivo e abilitando i permessi di notifica per l'app.
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Support Section -->
+        <div class="faq-section">
+            <h2 class="section-title">Strumenti</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quando si aggiorna la Modalità Scout?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        La Modalità Scout non segue un calendario di aggiornamento fisso. Durante la fase di mercato aperto, gli aggiornamenti avvengono con maggiore frequenza, mentre nei periodi di mercato chiuso possono essere più diradati.<br><br>
+                        Per conoscere con precisione la data dell'ultimo aggiornamento, è sufficiente aprire l'app, accedere alla sezione <strong>Scout</strong> e consultare la data indicata nella parte superiore della schermata.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quando si aggiorna Algo Formazioni?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Algo Formazioni segue un calendario di aggiornamenti regolare e scandito durante la settimana di campionato. In genere, il primo aggiornamento avviene tra martedì sera e mercoledì mattina, con dati ancora poco precisi. Un secondo aggiornamento viene pubblicato il giovedì, seguito da un terzo aggiornamento il venerdì, con dati più affidabili. L'ultimo aggiornamento, il più accurato, viene effettuato subito dopo la pubblicazione delle formazioni ufficiali.<br><br>
+                        Per verificare in qualsiasi momento la data dell'ultimo aggiornamento disponibile, è sufficiente accedere alla sezione <strong>Algo Formazioni</strong> all'interno dell'app. Prima di cliccare su "Formazione Consigliata", troverai in basso una dicitura che indica l'orario e la data dell'ultimo aggiornamento.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Perché Algo mi consiglia un giocatore infortunato?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        In alcuni casi può capitare che un giocatore segnalato come infortunato venga comunque consigliato da Algo. Questo può dipendere dal fatto che l'aggiornamento delle informazioni sull'infortunio non sia ancora stato integrato nel sistema: ti invitiamo quindi ad attendere il successivo aggiornamento, nel quale – se la notizia verrà confermata – il giocatore verrà automaticamente escluso.<br><br>
+                        È importante tenere presente che Algo si affida esclusivamente a <strong>fonti ufficiali e verificate</strong> per quanto riguarda gli infortuni. Se la notizia dell'infortunio è ancora incerta o non confermata da fonti affidabili, il sistema potrebbe comunque considerare il giocatore disponibile fino a verifica definitiva.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Perché Algo mi consiglia un giocatore che poi non gioca?</span>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42z"/>
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Algo può consigliare un giocatore anche se ha una bassa probabilità di essere titolare, perché il sistema non si basa unicamente sulla titolarità, ma su una <strong>valutazione del rendimento atteso</strong>.<br><br>
+                        La titolarità viene espressa in percentuale. Un giocatore con, ad esempio, solo il <strong>5% di probabilità di scendere in campo</strong>, ma con un rendimento potenzialmente alto in quei pochi casi, può risultare più vantaggioso rispetto a un titolare con percentuale elevata ma prestazioni medie o negative.<br><br>
+                        Ad esempio: se <strong>Perin (secondo portiere della Juventus)</strong> ha solo il 5% di possibilità di giocare contro il Cagliari, ma in quelle rare occasioni i suoi voti attesi sono molto buoni, Algo potrebbe preferirlo a <strong>Suzuki (Parma)</strong> con il 90% di titolarità contro l'Inter. In quel caso, secondo i calcoli di Algo, è <strong>più probabile che Perin – anche se giochi solo nel 5% dei casi – subisca meno malus</strong> rispetto a Suzuki contro un avversario molto più forte.<br><br>
+                        In sostanza, nella piccola percentuale di scenari in cui il giocatore di riserva è titolare, il suo <strong>rendimento potenziale può essere superiore a quello di un titolare con contesto sfavorevole</strong>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="support-section">
             <div class="support-box">
                 <p><strong>Non abbiamo risolto il tuo problema?</strong></p>
@@ -431,7 +590,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <div class="page-footer">
             <a href="index.html" class="back-link">
                 ← Torna alla Home
@@ -440,7 +598,6 @@
     </div>
 
     <script>
-        // Script per gestire l'espansione/chiusura delle FAQ
         document.addEventListener('DOMContentLoaded', function() {
             const faqItems = document.querySelectorAll('.faq-item');
             
@@ -452,22 +609,37 @@
                 question.addEventListener('click', () => {
                     const isActive = item.classList.contains('active');
                     
-                    // Chiudi tutte le altre FAQ
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                             const otherAnswer = otherItem.querySelector('.faq-answer');
                             otherAnswer.style.maxHeight = '0';
                         }
-                    });
+            const featuredFaq = document.getElementById('featured-faq');
+            if (featuredFaq) {
+                const featuredHeader = featuredFaq.querySelector('.featured-faq-header');
+                const featuredContent = featuredFaq.querySelector('.featured-faq-content');
+                const featuredContentInner = featuredFaq.querySelector('.featured-faq-content-inner');
+                
+                featuredHeader.addEventListener('click', () => {
+                    const isActive = featuredFaq.classList.contains('active');
                     
-                    // Toggle dell'item corrente
+                    if (isActive) {
+                        featuredFaq.classList.remove('active');
+                        featuredContent.style.maxHeight = '0';
+                    } else {
+                        featuredFaq.classList.add('active');
+                        featuredContent.style.maxHeight = featuredContentInner.scrollHeight + 35 + 'px';
+                    }
+                });
+            }
+        });
+                    
                     if (isActive) {
                         item.classList.remove('active');
                         answer.style.maxHeight = '0';
                     } else {
                         item.classList.add('active');
-                        // Calcola l'altezza dinamica del contenuto
                         answer.style.maxHeight = answerContent.scrollHeight + 25 + 'px';
                     }
                 });
