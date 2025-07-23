@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YLG0SQRL7D"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YLG0SQRL7D');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contattaci - Algo Fantacalcio</title>
+    <link rel="icon" type="image/svg+xml" href="./loghi/Pittogramma-Blu.svg">
+    <link rel="alternate icon" href="./favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.7;
+            color: white;
+            background: linear-gradient(135deg, #101828 0%, #192335 50%, #1e293b 100%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Anton', Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px 60px;
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Anton', Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px;
+            color: white;
+            font-size: 16px;
+            font-family: 'Inter', Arial, sans-serif;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Form Row */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Inter', Arial, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(96, 165, 250, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+
+        .message.success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+
+        .message.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .message.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 15px 40px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .form-container {
+                padding: 30px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 16px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 10px 30px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .form-container {
+                padding: 25px 20px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <a href="index.html" class="logo-link">
+                <img src="./loghi/Pittogramma-Bianco.svg" width="32px" height="32px" alt="Algo Fantacalcio">
+                Algo Fantacalcio
+            </a>
+            <h1 class="page-title">Contattaci</h1>
+            <p class="page-subtitle">Hai una domanda o hai bisogno di assistenza? Scrivici!</p>
+        </div>
+
+        <div class="form-container">
+            <div id="message" class="message"></div>
+
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xqalpgzq" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Il tuo nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="cognome">Cognome *</label>
+                        <input type="text" id="cognome" name="cognome" required placeholder="Il tuo cognome">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="la-tua-email@esempio.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="oggetto">Oggetto *</label>
+                    <select id="oggetto" name="oggetto" required>
+                        <option value="">Seleziona l'oggetto della richiesta</option>
+                        <option value="supporto-tecnico">Supporto Tecnico</option>
+                        <option value="problemi-abbonamento">Problemi con l'Abbonamento</option>
+                        <option value="richiesta-rimborso">Richiesta Rimborso</option>
+                        <option value="suggerimenti">Suggerimenti e Feedback</option>
+                        <option value="partnership">Partnership e Collaborazioni</option>
+                        <option value="altro">Altro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="messaggio">Messaggio *</label>
+                    <textarea id="messaggio" name="message" required placeholder="Descrivi la tua richiesta nel dettaglio..."></textarea>
+                </div>
+
+                <input type="hidden" name="_subject" value="Nuovo messaggio dal sito Algo Fantacalcio">
+                
+                <input type="hidden" name="_next" value="https://algofantacalcio.it/grazie.html">
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Invia Messaggio
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <a href="index.html" class="back-link">
+                ← Torna alla Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const messageDiv = document.getElementById('message');
+
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type} show`;
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 5000);
+        }
+
+        function setLoading(loading) {
+            if (loading) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner"></span>Invio in corso...';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Invia Messaggio';
+            }
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value.trim();
+            const cognome = document.getElementById('cognome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const oggetto = document.getElementById('oggetto').value;
+            const messaggio = document.getElementById('messaggio').value.trim();
+
+            if (!nome || !cognome || !email || !oggetto || !messaggio) {
+                showMessage('Per favore, compila tutti i campi obbligatori.', 'error');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Per favore, inserisci un indirizzo email valido.', 'error');
+                return;
+            }
+
+            setLoading(true);
+
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showMessage('Messaggio inviato con successo! Ti risponderemo al più presto.', 'success');
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwnProperty.call(data, 'errors')) {
+                            showMessage(data["errors"].map(error => error["message"]).join(", "), 'error');
+                        } else {
+                            showMessage('Errore durante l\'invio del messaggio. Riprova più tardi.', 'error');
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('Errore durante l\'invio del messaggio. Riprova più tardi o contattaci direttamente a supporto@algofantacalcio.it', 'error');
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+        });
+
+        form.addEventListener('input', function() {
+            if (messageDiv.classList.contains('show')) {
+                messageDiv.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
